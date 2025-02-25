@@ -1,0 +1,126 @@
+@use './styles/fonts';
+@use './styles/colors' as *;
+@use './styles/dimensions' as *;
+@use './styles/mixins' as *;
+
+.o2-input {
+  @extend %font-body-m;
+  @include boxShadow();
+  box-sizing: border-box;
+  border-radius: $dimension-radius-input;
+  border: 0px solid;
+  padding: $dimension-s $dimension-xs $dimension-s $dimension-m;
+  caret-color: $o2-blue-500;
+  width: 100%;
+
+  &:disabled {
+    background-color: $core-alpha-dim-50;
+  }
+
+  &:hover:enabled {
+    @include boxShadow(3px, $core-alpha-dim-50);
+  }
+
+  &:focus:enabled {
+    @include boxShadow(3px, $core-alpha-dim-800);
+  }
+
+  &::placeholder {
+    color: $core-gray-300;
+  }
+
+  &--large {
+    @include setHeight($dimension-7xl);
+  }
+
+  &--medium {
+    @include setHeight($dimension-5xl);
+  }
+
+  &--small {
+    @extend %font-body-s;
+    @include setHeight($dimension-3xl);
+  }
+
+  &--icon-left {
+    padding-left: $dimension-4xl;
+  }
+
+  &--icon-right {
+    padding-right: $dimension-4xl;
+  }
+
+  &--error {
+    @include boxShadow(1px, $core-red-600);
+  }
+
+  &__wrapper {
+    @include flex(column);
+
+    &-inner {
+      position: relative;
+      display: inline-block;
+    }
+  }
+
+  &__label {
+    @extend %font-label-m;
+    color: $core-gray-950;
+
+    &--optional {
+      @extend %font-label-s;
+    }
+
+    &--mandatory {
+      color: $core-red-600;
+    }
+
+    &__wrapper {
+      @include flex();
+    }
+  }
+
+  &__description {
+    @extend %font-body-s;
+  }
+
+  &__icon {
+    position: absolute;
+    inset: 0;
+    color: $core-gray-500;
+    margin: auto;
+
+    path {
+      fill: currentColor;
+    }
+
+    &--large {
+      @include squareSize($dimension-3xl);
+    }
+
+    &--medium {
+      @include squareSize($dimension-xl);
+    }
+
+    &--small {
+      @include squareSize($dimension-l);
+    }
+
+    &--left {
+      margin-left: $dimension-xs;
+    }
+
+    &--right {
+      margin-right: $dimension-xs;
+    }
+
+    &--error {
+      color: $core-red-600;
+    }
+  }
+
+  &__error-message {
+    @extend %font-body-s;
+    color: $core-red-600;
+  }
+}

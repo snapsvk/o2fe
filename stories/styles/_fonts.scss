@@ -1,0 +1,28 @@
+$font-font-family: 'On Air Var', Calibri, sans-serif;
+
+@mixin use-font($size, $weight, $line-height, $letter-spacing) {
+  font-family: $font-font-family;
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $line-height;
+  letter-spacing: $letter-spacing;
+}
+
+%font {
+  &-label {
+    &-m {
+      @include use-font(16px, 550, 22px, 0.16px);
+    }
+    &-s {
+      @include use-font(14px, 500, 17px, 0.16px);
+    }
+  }
+  &-body {
+    &-m {
+      @include use-font(16px, 400, 22px, 0.01px);
+    }
+    &-s {
+      @include use-font(14px, 400, 17px, 0.01px);
+    }
+  }
+}
